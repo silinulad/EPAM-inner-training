@@ -1,0 +1,47 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<c:set var="lang" value="${not empty language ? language : 'en'}" scope="session" />
+<fmt:setLocale value="${lang}" />
+<fmt:setBundle basename="localization.locale" />
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">EarlGrey</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="./"><fmt:message key="navbar.link.home" /></a></li>
+                <li><a href="./main"><fmt:message key="navbar.link.profile" /></a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown-toggle">
+                   <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <fmt:message key="navbar.label.lang" /> <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./locale?lang=en">English</a></li>
+                        <li><a href="./locale?lang=ru">Русский</a></li>
+                    </ul>
+                </li>
+                <c:if test="${sessionScope.user != null}">
+                    <a class="btn navbar-btn" role="button" href="./logout"><span
+                            class="glyphicon glyphicon-log-out"></span> <fmt:message key="navbar.button.logout" /></a>
+                </c:if>
+                <c:if test="${sessionScope.user == null}">
+                    <a class="btn navbar-btn" role="button" href="./login"><span
+                            class="glyphicon glyphicon-log-in"></span> <fmt:message key="navbar.button.login" /></a>
+                </c:if>
+            </ul>
+        </div>
+    </div>
+</nav>
