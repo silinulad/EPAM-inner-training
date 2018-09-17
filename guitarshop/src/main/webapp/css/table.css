@@ -1,0 +1,24 @@
+.table {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+}
+.dataTables_filter {
+    margin-top: 10px !important;
+    margin-right:10px !important;
+    margin-left:10px !important;
+}
+.dataTables_length {
+    margin-top: 10px !important;
+    margin-right:10px !important;
+    margin-left:10px !important;
+}
+.dataTables_info {
+    margin-right:10px !important;
+    margin-left:10px !important;
+    margin-bottom: 10px !important;
+}
+.dataTables_paginate {
+    margin-right:10px !important;
+    margin-left:10px !important;
+    margin-bottom: 10px !important;
+}

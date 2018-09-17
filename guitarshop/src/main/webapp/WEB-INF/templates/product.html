@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Login page</title>
+
+<link href="../../css/login.css" th:href="@{/css/login.css}" rel="stylesheet">
+<link href="../../css/navbar.css" th:href="@{/css/navbar.css}" rel="stylesheet">
+<link href="../../css/footer.css" th:href="@{/css/footer.css}" rel="stylesheet">
+<link href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" th:href="@{/}">Guitar shop</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a th:href="@{/}">Product list</a></li>
+					<li><a th:href="@{/cart/1}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a class="btn navbar-btn" role="button" th:href="@{/profile/1}">Profile</a></li>
+					<li><a class="btn navbar-btn" role="button" th:href="@{/logout}"><span
+							class="glyphicon glyphicon-log-in"></span>Log out</a>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<!-- user profile -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Product Information</h3>
+			</div>
+			<div class="panel-body">
+				<div class="media">
+					<div class="media-body">
+						<p class="media-heading" th:text="${'Id: ' + product.id + ' Name: ' + product.model.name}">
+						<p th:text="${product.model.description}">
+						<hr>
+						<p th:text="${'Category: ' + product.model.category.name}">
+						<p th:text="${'Category description: ' + product.model.category.description}">
+						<hr>
+						<p th:text="${'Maker name: ' + product.model.maker.name}">
+						<p th:text="${'Maker country: ' + product.model.maker.country}">
+						<hr>
+						<p th:text="'$ ' + ${product.price}"></p>
+						<br><br>
+						<p>
+							<a th:href="@{|/cart/addProduct/1/${product.id}|}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+						</p>
+						<hr>
+						<p>
+							<a th:href="@{/}">Show product list</a>
+						</p>
+					</div>
+					<div class="media-right">
+						<img class="media-object avatar img-rounded"
+							th:src="@{|/images/${product.model.image}|}"
+							style="width: 450px; height: 300px;">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+	<script src="../../js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
